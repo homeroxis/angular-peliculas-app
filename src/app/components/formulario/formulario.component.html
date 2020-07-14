@@ -1,0 +1,53 @@
+<!-- slider -->
+<app-slider [nombre]="'Formulario'" [size]="'small'"></app-slider>
+
+<div class="center">
+    <section id="content">
+        <h2 class="subheader">Formulario</h2>
+        <div *ngIf="user.nombre">
+            <h3>Datos Formulario</h3>
+            <p>{{ user.nombre }} {{ user.apellidos }}</p>
+            <p>{{ user.bio }}</p>
+            <p>{{ user.genero }}</p>
+        </div>
+
+        <form class="mid-form" #userForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required
+                    pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" />
+                <small *ngIf="!nombre.valid && nombre.touched">el nombre no es válido</small>
+            </div>
+
+            <div class="form-group">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellidos" required
+                    pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" />
+                <small *ngIf="!apellidos.valid && apellidos.touched">el o los apellidos no son válidos</small>
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Biografia</label>
+                <textarea name="bio" #bio="ngModel" [(ngModel)]="user.bio" required></textarea>
+                <small *ngIf="!bio.valid && bio.touched">La biografía no es válida</small>
+            </div>
+
+            <div class="form-group radibuttons">
+                <input type="radio" name="genero" value="hombre" #genero="ngModel" [(ngModel)]="user.genero" required />
+                Hombre
+                <input type="radio" name="genero" value="mujer" #genero="ngModel" [(ngModel)]="user.genero" />
+                Mujer
+                <input type="radio" name="genero" value="otro" #genero="ngModel" [(ngModel)]="user.genero" />
+                Otro
+                <br />
+                <small *ngIf="!genero.valid && genero.touched">Seleccione un género</small>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <input type="submit" value="Enviar" class="btn btn-success" [disabled]="userForm.invalid" />
+        </form>
+    </section>
+    <!-- sidebar -->
+    <app-sidebar></app-sidebar>
+</div>
