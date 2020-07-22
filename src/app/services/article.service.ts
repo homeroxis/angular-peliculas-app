@@ -6,17 +6,25 @@ import { Global } from './global';
 
 @Injectable()
 export class ArticleService {
-  public url: string;
+    public url: string;
 
-  constructor(private _http: HttpClient) {
-    this.url = Global.url;
-  }
+    constructor(private _http: HttpClient) {
+        this.url = Global.url;
+    }
 
-  pruebas() {
-    return 'Soy el servicio de artículos';
-  }
+    getArticles(last: any = null): Observable<any> {
+        var articles = 'articles';
+        if (last != null) {
+            var articles = 'articles/true';
+        }
+        return this._http.get(this.url + articles);
+    }
 
-  getArticles(): Observable<any> {
-    return this._http.get(this.url + 'articles');
-  }
+    getArticle(articleId): Observable<any> {
+        return this._http.get(this.url + 'article/' + articleId);
+    }
+
+    search(searchString): Observable<any> {
+        return this._http.get(this.url + 'search/' + searchString);
+    }
 }

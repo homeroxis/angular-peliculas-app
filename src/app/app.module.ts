@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { routing, appRoutingProviders } from './app.routing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MomentModule } from 'angular2-moment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,32 +20,32 @@ import { BlogComponent } from './components/blog/blog.component';
 import { ErrorComponent } from './components/error/error.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { EsParPipe } from './pipes/espar.pipe';
+import { ArticlesComponent } from './components/articles/articles.component';
+import { ArticleComponent } from './components/article/article.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MiComponente,
-    PeliculasComponent,
-    HeaderComponent,
-    SliderComponent,
-    SidebarComponent,
-    FooterComponent,
-    HomeComponent,
-    FormularioComponent,
-    PaginaComponent,
-    BlogComponent,
-    ErrorComponent,
-    PeliculaComponent,
-    EsParPipe,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    routing,
-    FormsModule,
-    HttpClientModule,
-  ],
-  providers: [appRoutingProviders],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        MiComponente,
+        PeliculasComponent,
+        HeaderComponent,
+        SliderComponent,
+        SidebarComponent,
+        FooterComponent,
+        HomeComponent,
+        FormularioComponent,
+        PaginaComponent,
+        BlogComponent,
+        ErrorComponent,
+        PeliculaComponent,
+        EsParPipe,
+        ArticlesComponent,
+        ArticleComponent,
+        SearchComponent,
+    ],
+    imports: [BrowserModule, AppRoutingModule, routing, FormsModule, HttpClientModule, MomentModule],
+    providers: [appRoutingProviders],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

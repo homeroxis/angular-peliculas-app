@@ -1,15 +1,15 @@
 <!-- slider -->
-<app-slider [nombre]="'Blog'" [size]="'small'"></app-slider>
+<app-slider [nombre]="'Búsqueda: '+search" [size]="'small'"></app-slider>
 
 <div class="center">
 
     <section id="content">
-        <h2 class="subheader">Blog</h2>
+        <h2 class="subheader">Artículos encontrados:</h2>
 
         <app-articles [articles]="articles"></app-articles>
 
     </section>
-    <!-- sidebar -->
+
     <app-sidebar></app-sidebar>
 
 </div>
