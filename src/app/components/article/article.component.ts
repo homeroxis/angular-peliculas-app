@@ -10,6 +10,7 @@ import { ArticleService } from '../../services/article.service';
     providers: [ArticleService],
 })
 export class ArticleComponent implements OnInit {
+    // viene del modelo
     public article: Article;
     public url: string;
 
@@ -17,14 +18,13 @@ export class ArticleComponent implements OnInit {
         this.url = Global.url;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._route.params.subscribe((params) => {
             let id = params['id'];
             this._articleService.getArticle(id).subscribe(
                 (response) => {
                     if (response.article) {
                         this.article = response.article;
-                        console.log(this.article);
                     } else {
                         this._router.navigate(['/home']);
                     }
